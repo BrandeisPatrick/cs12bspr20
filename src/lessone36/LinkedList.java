@@ -1,8 +1,10 @@
 package lessone36;
+import java.util.Iterator;
+import java.lang.Iterable;
 
-
-public class LinkedList<T> {
+public class LinkedList<T> implements Iterable<T>{
 	public LinkedListNode<T> front;
+	
 	
 	public LinkedList() {
 		front = null;
@@ -43,6 +45,32 @@ public class LinkedList<T> {
 		}
 		return s + n.val+"]";
 	}
+	
+	public Iterator<T> iterator() {
+		return new MyListIterator<T>(this);
+	}
 
+}
+
+class MyListIterator<T> implements Iterator<T>{
+	
+	LinkedListNode<T> position = null;
+	
+	MyListIterator(LinkedList<T> list) {
+		position = list.front;
+	}
+
+	@Override
+	public boolean hasNext() {
+		return position != null;
+	}
+
+	@Override
+	public T next() {
+		T val = position.val;
+		position = position.next;
+		return val;
+	}
+	
 }
 

@@ -14,6 +14,10 @@ public class LinkedListTest {
 			System.out.println(n.val);
 			n = n.next;
 		}
+		System.out.println("now using a for loop");
+		for(Integer m: list) {
+			System.out.println(m);
+		}
 		
 		
 		
